@@ -16,9 +16,8 @@ const Hero = () => {
       />
       
       <div className="text-center md:text-left max-w-2xl">
-        {/* Gradient Header - The main visual punch */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
-          GitHub Art
+        <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
+          GitHub Contribution Art
         </h1>
         <p className="text-lg md:text-xl text-gray-600 mb-8">
           Design stunning artwork on your GitHub contribution graph.

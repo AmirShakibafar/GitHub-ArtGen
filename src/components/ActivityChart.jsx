@@ -19,8 +19,8 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
 
   const getColorForCell = (isChecked) => {
     // A dark, slightly transparent background for inactive cells
-    if (!isChecked) return "bg-slate-800"; 
-    return intensityLevels.find(level => level.commits === intensity)?.color || 'bg-purple-500';
+    if (!isChecked) return "bg-slate-300 dark:bg-slate-800"; 
+    return intensityLevels.find(level => level.commits === intensity)?.color || 'bg-green-500';
   };
 
   const handleYearBlur = () => {
@@ -53,15 +53,15 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
 
   return (
     // Main container with a modern, glassy dark background
-    <div className="flex flex-col items-center p-6 md:p-8 w-[95%] md:w-[85%] mx-auto mt-10 bg-gray-900/50 backdrop-blur-sm border border-slate-700 rounded-xl">
-      <h2 className="text-3xl font-bold mb-6 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
+    <div className="flex flex-col items-center p-6 md:p-8 w-[95%] md:w-[85%] mx-auto mt-10 dark:bg-gray-900/50 backdrop-blur-sm dark:border border-slate-700 rounded-xl">
+      <h2 className="text-5xl font-bold mb-6 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
         Draw Your Masterpiece
       </h2>
 
       {/* --- UI Controls --- */}
-      <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full mb-6 p-4 bg-slate-800/50 rounded-lg">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full mb-6 p-4 dark:bg-slate-800/50 rounded-lg">
         <div className="flex items-center gap-3">
-          <label htmlFor="year" className="font-medium text-gray-300">Year:</label>
+          <label htmlFor="year" className="font-medium text-gray-900 dark:text-gray-300">Year:</label>
           <input
             type="number"
             id="year"
@@ -74,7 +74,7 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
         </div>
 
         <div className="flex items-center">
-          <span className="font-medium text-gray-300 mr-4">Intensity:</span>
+          <span className="font-medium text-gray-900 dark:text-gray-300 mr-4">Intensity:</span>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             {intensityLevels.map(({ name, commits, color }) => (
               <label key={name} className="flex items-center gap-2 cursor-pointer group">
@@ -86,8 +86,8 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
                   onChange={() => setIntensity(commits)}
                   className="absolute opacity-0 h-0 w-0"
                 />
-                <div className={`w-4 h-4 rounded-sm ${color} transition-transform group-hover:scale-110 ${intensity === commits ? 'ring-2 ring-offset-2 ring-offset-slate-900 ring-pink-500' : ''}`}></div>
-                <span className={`text-sm ${intensity === commits ? 'text-white' : 'text-gray-400'} group-hover:text-white transition-colors`}>{name}</span>
+                <div className={`w-4 h-4 rounded-sm ${color} transition-transform group-hover:scale-110 ${intensity === commits ? 'ring-2 ring-offset-2 dark:ring-offset-slate-900 ring-pink-500' : ''}`}></div>
+                <span className={`text-sm ${intensity === commits ? 'text-gray-700 dark:text-white' : 'text-gray-400'} group-hover:text-black group-hover:dark:text-white transition-colors`}>{name}</span>
               </label>
             ))}
           </div>
