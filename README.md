@@ -1,5 +1,5 @@
 # GitHub Art Generator: The Complete Guide 🎨
-
+![Local Art](/public/mainPage.png)
 Welcome! This guide will walk you through using the `github_art_generator.py` script and your `art.txt` file to create beautiful pixel art on your GitHub contribution graph.
 
 You should have a folder containing two files:
