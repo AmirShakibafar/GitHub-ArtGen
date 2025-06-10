@@ -1,73 +1,117 @@
-# GitHub Art Generator 🎨
+# GitHub Art Generator: The Complete Guide 🎨
 
-This project uses a Python script to create beautiful pixel art on your GitHub contribution graph by generating commits with specific past dates.
+Welcome! This guide will walk you through using the `github_art_generator.py` script and your `art.txt` file to create beautiful pixel art on your GitHub contribution graph.
 
-## How It Works
+You should have a folder containing two files:
+1.  `art.txt` (Your 52x7 art canvas, pre-filled from the website)
+2.  `github_art_generator.py` (The Python script that does the magic)
 
-The script reads a design from a text file (`art.txt`) and creates a new Git repository. For every `#` character in your design, it creates several commits on a corresponding date in the past year. When you push this repository to GitHub, your contribution graph will display the art you created.
+## Prerequisites
 
----
+Before you begin, make sure you have the following ready:
+- **Python 3** installed on your system.
+- **Git** installed on your system.
+- Your Git user name and email configured globally. If not, run these commands in your terminal:
+  ```bash
+  git config --global user.name "Your Name"
+  git config --global user.email "your.email@example.com"
 
-## Step-by-Step Guide
+## Step 1: Configure the Script
 
-Follow these steps carefully to create your own GitHub art.
+First, you need to tell the script a few things. Open the github_art_generator.py file in a text editor. At the very top, you will find the Configuration section.
 
-### Step 1: Prerequisites
+Here’s a breakdown of each setting:
+### ART_FILE_NAME
 
-Make sure you have the following installed on your system:
-- **Python 3**: [Download Python](https://www.python.org/downloads/)
-- **Git**: [Download Git](https://git-scm.com/downloads/)
+This is the name of the text file that contains your artwork. Since it's already named art.txt, you don't need to change this.
 
-### Step 2: Set Up Your Project
+```bash
+    ART_FILE_NAME = "Art.txt"
+```
 
-1.  **Download the script**: Save the Python script from above and name it `github_art.py`.
-2.  **Create a folder**: Create a new, empty folder on your computer for this project.
-3.  **Place the script**: Move the `github_art.py` file into the new folder you just created.
+### COMMITS_PER_DOT
 
-### Step 3: Create Your Art Canvas
+This controls how "dark" each pixel on your graph will be. More commits result in a darker green square. A value of "*5*" is a good starting point.
 
-1.  **Open a terminal or command prompt** in the project folder.
-2.  **Run the script for the first time**:
-    ```bash
-    python github_art.py
-    ```
-3.  This will create a new file named `art.txt`. This is your canvas!
+```bash
+# The number of commits to create for each '#' character.
+COMMITS_PER_DOT = 5
+```
 
-### Step 4: Draw Your Masterpiece
+### TARGET_YEAR
 
-1.  **Open `art.txt`** in a text editor.
-2.  You will see instructions and a 52x7 grid. The grid represents the last year on your GitHub profile.
-3.  **Draw your art** using the `#` character for "on" pixels and a space for "off" pixels.
-4.  **Save the file** when you are done.
+This is the most **important** setting for choosing the timeframe for your art.
 
-### Step 5: Generate the Commits
+    For a specific year (e.g., 2023, 2020), set the year as a number.
 
-1.  Go back to your terminal in the same folder.
-2.  **Run the script again**:
-    ```bash
-    python github_art.py
-    ```
-3.  The script will now read your `art.txt` file and create hundreds of commits. This may take a minute.
+    For the most recent 52 weeks, set the value to None.
 
-### Step 6: Create a New GitHub Repository
+Example for a specific year:
+``` bash
+# The year you want the art to appear in.
+TARGET_YEAR = 2024
+```
+Example for the last 52 weeks (default behavior):
+``` bash
+# The year you want the art to appear in.
+TARGET_YEAR = None
+```
 
-1.  Go to [GitHub.com](https://github.com) and log in.
-2.  Create a **new, empty repository**. Do NOT initialize it with a README or .gitignore file.
-3.  Name it something like `my-github-art`.
-4.  Copy the repository URL. It will look something like this: `https://github.com/YourUsername/my-github-art.git`.
+### GIT_NAME_OVERRIDE & GIT_EMAIL_OVERRIDE
 
-### Step 7: Push Your Art to GitHub
+These are optional. Only use them if you want to commit with a different name or email than your global Git configuration. Most users should leave these blank.
+``` bash
+#Optional overrides for your Git identity.
+GIT_NAME_OVERRIDE = ""
+GIT_EMAIL_OVERRIDE = ""
+```
 
-1.  Go back to your terminal one last time.
-2.  **Link your local repository to GitHub**:
-    *(Replace `<your-repo-url>` with the URL you just copied)*
-    ```bash
-    git remote add origin <your-repo-url>
-    ```
-3.  **Push your commits**:
-    *(We use `--force` because we are creating a new history)*
-    ```bash
-    git push --force -u origin main
-    ```
+## Step 2: Run the Project
 
-**That's it!** Go to your GitHub profile, and you should now see your beautiful creation on your contribution graph.
+Once you have saved your configuration changes in the script, you are ready to generate and push your art.
+
+1. Open a terminal or command prompt in the folder containing the script and art.txt.
+
+2. Initialize a Git repository in this folder. This is a one-time setup step.
+
+3. git init
+
+4. Run the Python script to generate all the commits. This may take a moment.
+
+5. python github_art_generator.py
+
+6. Create a new, empty repository on GitHub.com. *Do NOT add a README, license, or .gitignore file*.
+
+7. Copy the repository URL from the GitHub page. It will look like https://github.com/YourUsername/your-repo-name.git.
+
+8. Link your local repository to GitHub, replacing <your-repo-url> with the URL you copied.
+
+9. git remote add origin <your-repo-url>
+
+10. Push your art to GitHub.
+
+11. git push --force -u origin main
+
+(We use --force because we are creating a brand new commit history for this special repository).
+
+Congratulations! Go to your GitHub profile page. Your new artwork should be visible on your contribution graph.
+## How to Start Over (If Something Goes Wrong)
+
+It's easy to make a mistake. If your art doesn't look right or you want to try a different design, you can easily delete everything and start again.
+
+1. Delete the GitHub Repository:
+
+    1. Go to the repository page on GitHub.
+
+    2. Click Settings.
+
+    3. Scroll all the way down to the "Danger Zone".
+
+    4. Click Delete this repository and follow the on-screen instructions. This is permanent, but since this repo is just for art, it's okay.
+
+2. Delete the Local Git History:
+
+    1. In your project folder on your computer, delete the hidden .git folder. This folder contains all the commits you generated. If you can't see it, you may need to enable "Show Hidden Files" in your file explorer.
+
+    2. Try Again:
+    Now you have a clean slate. You can modify your art.txt file (or get a new one), check your script configuration, and start again from Step 2 of this guide (beginning with git init).

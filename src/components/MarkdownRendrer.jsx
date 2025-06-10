@@ -11,7 +11,7 @@ const MarkdownRenderer = () => {
   dark:prose-h2:text-green-600
   dark:prose-h3:text-purple-600
   prose-strong:text-black
-  dark:prose-strong:text-white
+  dark:prose-strong:text-red-500
   prose-code:font-mono dark:prose-code:text-text
   prose-a:text-blue-600 prose-a:no-underline hover:prose-a:text-blue-500 dark:prose-a:text-blue-400
   "
