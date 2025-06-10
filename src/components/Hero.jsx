@@ -3,7 +3,7 @@ import { FaGithub, FaStar } from "react-icons/fa"; // Using react-icons for GitH
 
 const Hero = () => {
   const openGitHubRepo = () => {
-    window.open("https://github.com/AmirShakibafar/your-repo", "_blank");
+    window.open("https://github.com/AmirShakibafar/GitHub-ArtGen", "_blank");
   };
 
   return (
