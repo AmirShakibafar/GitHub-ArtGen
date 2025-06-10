@@ -1,10 +1,10 @@
 # GitHub Art Generator: The Complete Guide 🎨
-![Local Art](/public/mainPage.png)
-Welcome! This guide will walk you through using the `github_art_generator.py` script and your `art.txt` file to create beautiful pixel art on your GitHub contribution graph.
+![Local Art](/public/newMain.png)
+Welcome! This guide will walk you through using the `script.py` script and your `art.txt` file to create beautiful pixel art on your GitHub contribution graph.
 
 You should have a folder containing two files:
 1.  `art.txt` (Your 52x7 art canvas, pre-filled from the website)
-2.  `github_art_generator.py` (The Python script that does the magic)
+2.  `script.py` (The Python script that does the magic)
 
 
 ## How To Use
@@ -19,7 +19,7 @@ git init
 ```
 4. Run the Python script to generate all the commits. This may take a moment.
 ``` bash
-python github_art_generator.py
+python script.py
 ```
 6. Create a new, empty repository on GitHub.com. *Do NOT add a README, license, or .gitignore file*.
 
@@ -71,7 +71,7 @@ Here’s a breakdown of each setting:
 This is the name of the text file that contains your artwork. Since it's already named art.txt, you don't need to change this.
 
 ```bash
-    ART_FILE_NAME = "Art.txt"
+    ART_FILE_NAME = "art.txt"
 ```
 
 ### COMMITS_PER_DOT

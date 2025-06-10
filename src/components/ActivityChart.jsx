@@ -8,10 +8,10 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
   
   // New purple-themed intensity palette
   const intensityLevels = [
-    { name: 'Subtle', commits: 2,  color: 'bg-purple-400' },
-    { name: 'Light',  commits: 5,  color: 'bg-purple-500' },
-    { name: 'Medium', commits: 8,  color: 'bg-purple-700' },
-    { name: 'Heavy',  commits: 12, color: 'bg-purple-900' },
+    { name: 'Subtle', commits: 2,  color: 'bg-green-400' },
+    { name: 'Light',  commits: 5,  color: 'bg-green-500' },
+    { name: 'Medium', commits: 8,  color: 'bg-green-700' },
+    { name: 'Heavy',  commits: 12, color: 'bg-green-900' },
   ];
 
   // Default to the "Medium" intensity
