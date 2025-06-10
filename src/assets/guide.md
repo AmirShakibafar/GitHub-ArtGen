@@ -73,45 +73,47 @@ Once you have saved your configuration changes in the script, you are ready to g
 1. Open a terminal or command prompt in the folder containing the script and art.txt.
 
 2. Initialize a Git repository in this folder. This is a one-time setup step.
-
-3. git init
-
+``` bash
+git init
+```
 4. Run the Python script to generate all the commits. This may take a moment.
-
-5. python github_art_generator.py
-
+``` bash
+python github_art_generator.py
+```
 6. Create a new, empty repository on GitHub.com. *Do NOT add a README, license, or .gitignore file*.
 
 7. Copy the repository URL from the GitHub page. It will look like https://github.com/YourUsername/your-repo-name.git.
 
 8. Link your local repository to GitHub, replacing <your-repo-url> with the URL you copied.
 
-9. git remote add origin <your-repo-url>
-
+``` bash
+git remote add origin <your-repo-url>
+```
 10. Push your art to GitHub.
-
-11. git push --force -u origin main
-
+``` bash
+git push --force -u origin main
+```
 (We use --force because we are creating a brand new commit history for this special repository).
 
-Congratulations! Go to your GitHub profile page. Your new artwork should be visible on your contribution graph.
+### Congratulations! Go to your GitHub profile page. Your new artwork should be visible on your contribution graph.
+![Local Art](/public/example.png)
 ## How to Start Over (If Something Goes Wrong)
 
 It's easy to make a mistake. If your art doesn't look right or you want to try a different design, you can easily delete everything and start again.
 
 1. Delete the GitHub Repository:
 
-    1. Go to the repository page on GitHub.
+    * Go to the repository page on GitHub.
 
-    2. Click Settings.
+    * Click Settings.
 
-    3. Scroll all the way down to the "Danger Zone".
+    * Scroll all the way down to the "Danger Zone".
 
-    4. Click Delete this repository and follow the on-screen instructions. This is permanent, but since this repo is just for art, it's okay.
+    * Click Delete this repository and follow the on-screen instructions. This is permanent, but since this repo is just for art, it's okay.
 
 2. Delete the Local Git History:
 
-    1. In your project folder on your computer, delete the hidden .git folder. This folder contains all the commits you generated. If you can't see it, you may need to enable "Show Hidden Files" in your file explorer.
+    * In your project folder on your computer, delete the hidden .git folder. This folder contains all the commits you generated. If you can't see it, you may need to enable "Show Hidden Files" in your file explorer.
 
-    2. Try Again:
-    Now you have a clean slate. You can modify your art.txt file (or get a new one), check your script configuration, and start again from Step 2 of this guide (beginning with git init).
+3. Try Again:
+    * Now you have a clean slate. You can modify your art.txt file (or get a new one), check your script configuration, and start again from Step 2 of this guide (beginning with git init).
