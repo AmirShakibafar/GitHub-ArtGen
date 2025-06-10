@@ -12,12 +12,12 @@ ART_FILE_NAME = "art.txt"
 
 # 2. The number of commits to create for each '#' character.
 #    More commits will make the dots on your graph appear darker.
-COMMITS_PER_DOT = 5
+COMMITS_PER_DOT = 12
 
 # 3. The year you want the art to appear in.
 #    Leave as None to default to the last 52 weeks.
 #    Example: TARGET_YEAR = 2023
-TARGET_YEAR = None
+TARGET_YEAR = 2022
 
 # 4. (Optional) Your Git name and email.
 #    The script will try to get these from your global Git config.
@@ -39,19 +39,23 @@ def main():
         print(f"   Please create it in the same directory as this script.")
         sys.exit(1)
 
+    # --- CORRECTED FILE READING LOGIC ---
+    # This reads all lines from the file without filtering.
+    # Your art.txt MUST contain exactly 7 lines.
     with open(ART_FILE_NAME) as f:
-        art_lines = [line.rstrip('\n') for line in f if not line.strip().startswith('#')]
+        art_lines = [line.rstrip('\n') for line in f.readlines()]
 
     if len(art_lines) != 7:
-        print(f"❌ Error: '{ART_FILE_NAME}' must have exactly 7 lines (for 7 days of the week).")
-        print(f"   Your file has {len(art_lines)} lines (after ignoring comments).")
+        print(f"❌ Error: '{ART_FILE_NAME}' must have exactly 7 lines.")
+        print(f"   Your file currently has {len(art_lines)} lines.")
+        print(f"   Please ensure there are no extra blank lines or comments.")
         sys.exit(1)
 
     for i, line in enumerate(art_lines):
         if len(line) != 52:
             day_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][i]
             print(f"❌ Error: Line {i + 1} (for {day_of_week}) in '{ART_FILE_NAME}' is not 52 characters long.")
-            print(f"   It currently has {len(line)} characters.")
+            print(f"   It currently has {len(line)} characters. Please ensure each line is padded with spaces.")
             sys.exit(1)
     
     print("✅ Art file is valid (7x52).")
@@ -93,14 +97,16 @@ def main():
     
     for week_index in range(52):
         for day_index in range(7):
-            if art_matrix[day_index][week_index] == '#':
-                commit_date = start_date + timedelta(days=(week_index * 7 + day_index))
-                date_str = commit_date.strftime("%Y-%m-%dT%H:%M:%S")
+            # This check ensures we don't try to access a line that doesn't exist
+            if day_index < len(art_matrix) and week_index < len(art_matrix[day_index]):
+                if art_matrix[day_index][week_index] == '#':
+                    commit_date = start_date + timedelta(days=(week_index * 7 + day_index))
+                    date_str = commit_date.strftime("%Y-%m-%dT%H:%M:%S")
 
-                for _ in range(COMMITS_PER_DOT):
-                    os.environ["GIT_AUTHOR_DATE"] = date_str
-                    os.environ["GIT_COMMITTER_DATE"] = date_str
-                    os.system(f'git commit --allow-empty -m "art" --date="{date_str}" >/dev/null 2>&1')
+                    for _ in range(COMMITS_PER_DOT):
+                        os.environ["GIT_AUTHOR_DATE"] = date_str
+                        os.environ["GIT_COMMITTER_DATE"] = date_str
+                        os.system(f'git commit --allow-empty -m "art" --date="{date_str}" >/dev/null 2>&1')
 
     print("\n✅ Success! Your artwork has been committed.")
     print("   To push it to GitHub, follow these steps:")

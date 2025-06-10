@@ -6,67 +6,8 @@ You should have a folder containing two files:
 1.  `art.txt` (Your 52x7 art canvas, pre-filled from the website)
 2.  `github_art_generator.py` (The Python script that does the magic)
 
-## Prerequisites
 
-Before you begin, make sure you have the following ready:
-- **Python 3** installed on your system.
-- **Git** installed on your system.
-- Your Git user name and email configured globally. If not, run these commands in your terminal:
-  ```bash
-  git config --global user.name "Your Name"
-  git config --global user.email "your.email@example.com"
-
-## Step 1: Configure the Script
-
-First, you need to tell the script a few things. Open the github_art_generator.py file in a text editor. At the very top, you will find the Configuration section.
-
-Here’s a breakdown of each setting:
-### ART_FILE_NAME
-
-This is the name of the text file that contains your artwork. Since it's already named art.txt, you don't need to change this.
-
-```bash
-    ART_FILE_NAME = "Art.txt"
-```
-
-### COMMITS_PER_DOT
-
-This controls how "dark" each pixel on your graph will be. More commits result in a darker green square. A value of "*5*" is a good starting point.
-
-```bash
-# The number of commits to create for each '#' character.
-COMMITS_PER_DOT = 5
-```
-
-### TARGET_YEAR
-
-This is the most **important** setting for choosing the timeframe for your art.
-
-    For a specific year (e.g., 2023, 2020), set the year as a number.
-
-    For the most recent 52 weeks, set the value to None.
-
-Example for a specific year:
-``` bash
-# The year you want the art to appear in.
-TARGET_YEAR = 2024
-```
-Example for the last 52 weeks (default behavior):
-``` bash
-# The year you want the art to appear in.
-TARGET_YEAR = None
-```
-
-### GIT_NAME_OVERRIDE & GIT_EMAIL_OVERRIDE
-
-These are optional. Only use them if you want to commit with a different name or email than your global Git configuration. Most users should leave these blank.
-``` bash
-#Optional overrides for your Git identity.
-GIT_NAME_OVERRIDE = ""
-GIT_EMAIL_OVERRIDE = ""
-```
-
-## Step 2: Run the Project
+## How To Use
 
 Once you have saved your configuration changes in the script, you are ready to generate and push your art.
 
@@ -117,3 +58,55 @@ It's easy to make a mistake. If your art doesn't look right or you want to try a
 
 3. Try Again:
     * Now you have a clean slate. You can modify your art.txt file (or get a new one), check your script configuration, and start again from Step 2 of this guide (beginning with git init).
+
+
+
+## You Can Configure the Script Manually Too
+
+First, you need to tell the script a few things. Open the github_art_generator.py file in a text editor. At the very top, you will find the Configuration section.
+
+Here’s a breakdown of each setting:
+### ART_FILE_NAME
+
+This is the name of the text file that contains your artwork. Since it's already named art.txt, you don't need to change this.
+
+```bash
+    ART_FILE_NAME = "Art.txt"
+```
+
+### COMMITS_PER_DOT
+
+This controls how "dark" each pixel on your graph will be. More commits result in a darker green square. A value of "*5*" is a good starting point.
+
+```bash
+# The number of commits to create for each '#' character.
+COMMITS_PER_DOT = 5
+```
+
+### TARGET_YEAR
+
+This is the most **important** setting for choosing the timeframe for your art.
+
+    For a specific year (e.g., 2023, 2020), set the year as a number.
+
+    For the most recent 52 weeks, set the value to None.
+
+Example for a specific year:
+``` bash
+# The year you want the art to appear in.
+TARGET_YEAR = 2024
+```
+Example for the last 52 weeks (default behavior):
+``` bash
+# The year you want the art to appear in.
+TARGET_YEAR = None
+```
+
+### GIT_NAME_OVERRIDE & GIT_EMAIL_OVERRIDE
+
+These are optional. Only use them if you want to commit with a different name or email than your global Git configuration. Most users should leave these blank.
+``` bash
+#Optional overrides for your Git identity.
+GIT_NAME_OVERRIDE = ""
+GIT_EMAIL_OVERRIDE = ""
+```
