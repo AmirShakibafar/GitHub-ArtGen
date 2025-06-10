@@ -37,7 +37,7 @@ git push --force -u origin main
 (We use --force because we are creating a brand new commit history for this special repository).
 
 ### Congratulations! Go to your GitHub profile page. Your new artwork should be visible on your contribution graph.
-![Local Art](/public/example.png)
+![Local Art](../../public/example.png)
 ## How to Start Over (If Something Goes Wrong)
 
 It's easy to make a mistake. If your art doesn't look right or you want to try a different design, you can easily delete everything and start again.
