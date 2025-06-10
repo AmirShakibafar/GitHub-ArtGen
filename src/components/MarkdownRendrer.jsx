@@ -1,37 +1,42 @@
 import ReactMarkdown from "react-markdown";
-import readmeContent from "../assets/guide.md?raw";
+import readmeContent from "../assets/guide.md?raw"; // Ensure you have '?raw' to import as string
 
 const MarkdownRenderer = () => {
   return (
-    <div
-      className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl 
-      max-w-[90%] md:max-w-[80%] p-4 mx-auto mt-10 
-      text-gray-800 dark:text-gray-200 
-      prose-h1:text-3xl sm:prose-h1:text-4xl font-bold
-      prose-h2:text-2xl sm:prose-h2:text-3xl 
-      prose-h3:text-xl sm:prose-h3:text-2xl
-      prose-h1:text-purple-800 dark:prose-h1:text-purple-400
-      prose-h2:text-blue-800 dark:prose-h2:text-blue-400
-      prose-h3:text-green-800 dark:prose-h3:text-green-400
-      prose-h4:text-orange-800 dark:prose-h4:text-orange-400
-      prose-strong:text-black dark:prose-strong:text-red-400
-      prose-code:font-mono prose-code:bg-gray-100 dark:prose-code:bg-gray-800 
-      prose-code:px-2 prose-code:py-1 prose-code:rounded
-      prose-pre:bg-gray-100 dark:prose-code:text-white prose-code:text-black dark:prose-pre:bg-gray-800
-      prose-pre:rounded-lg prose-pre:p-4
-      prose-blockquote:border-l-4 prose-blockquote:border-gray-400
-      prose-blockquote:pl-4 prose-blockquote:italic
-      prose-a:text-blue-600 dark:prose-a:text-blue-400
-      prose-a:underline hover:prose-a:text-blue-800 dark:hover:prose-a:text-blue-300
-      prose-img:rounded-lg prose-img:shadow-lg prose-img:mx-auto
-      prose-img:border prose-img:border-gray-200 dark:prose-img:border-gray-600
-      prose-table:border prose-table:border-gray-300 dark:prose-table:border-gray-600
-      prose-th:bg-gray-100 dark:prose-th:bg-gray-700
-      prose-td:border prose-td:border-gray-200 dark:prose-td:border-gray-600
-      prose-ul:list-disc prose-ol:list-decimal
-      prose-li:my-1"
-    >
-      <ReactMarkdown>{readmeContent}</ReactMarkdown>
+    // The same consistent, glassy container as the other components
+    <div className="w-[95%] md:w-[85%] mx-auto mt-10 bg-gray-900/50 backdrop-blur-sm border border-slate-700 rounded-xl">
+      <div
+        className={`
+          prose prose-sm sm:prose-base prose-invert 
+          max-w-none p-6 md:p-8 
+          
+          prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-4
+          prose-h1:bg-gradient-to-r prose-h1:from-purple-600 prose-h1:to-pink-500 prose-h1:text-transparent prose-h1:bg-clip-text
+          
+          prose-h2:text-2xl prose-h2:font-semibold prose-h2:border-b prose-h2:border-slate-700 prose-h2:pb-2 prose-h2:mb-3
+          
+          prose-p:text-gray-300 prose-p:leading-7
+          
+          prose-a:text-pink-500 prose-a:font-medium prose-a:no-underline
+          hover:prose-a:underline hover:prose-a:text-pink-400
+          
+          prose-strong:text-purple-300
+          
+          prose-blockquote:border-l-4 prose-blockquote:border-purple-500
+          prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-400
+          
+          prose-code:bg-slate-800/50 prose-code:text-pink-400 prose-code:font-mono 
+          prose-code:px-2 prose-code:py-1 prose-code:rounded-md
+          
+          prose-pre:bg-slate-800/50 prose-pre:border prose-pre:border-slate-700
+          prose-pre:rounded-lg prose-pre:p-4
+          
+          prose-img:rounded-lg prose-img:shadow-lg prose-img:mx-auto
+          prose-ul:list-disc prose-ul:marker:text-purple-400
+        `}
+      >
+        <ReactMarkdown>{readmeContent}</ReactMarkdown>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-# GitHub Art Generator: The Complete Guide 🎨
+# GitHub Art Generator: The Complete Guide
 
 Welcome! This guide will walk you through using the `github_art_generator.py` script and your `art.txt` file to create beautiful pixel art on your GitHub contribution graph.
 

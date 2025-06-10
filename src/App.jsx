@@ -2,6 +2,7 @@ import ActivityChart from "./components/ActivityChart";
 import { useState } from "react";
 import MarkdownRenderer from "./components/MarkdownRendrer";
 import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 function App() {
   const rows = 7;
   const cols = 52;
@@ -35,6 +36,7 @@ function App() {
         clearGrid={clearGrid}
       />
       <MarkdownRenderer />
+      <Footer/>
     </main>
   );
 }
