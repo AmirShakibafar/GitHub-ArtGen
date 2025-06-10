@@ -3,7 +3,7 @@ import { FaGithub, FaStar } from "react-icons/fa"; // Using react-icons for GitH
 
 const Hero = () => {
   const openGitHubRepo = () => {
-    window.open("https://github.com/your-username/your-repo", "_blank");
+    window.open("https://github.com/AmirShakibafar/your-repo", "_blank");
   };
 
   return (
@@ -14,12 +14,12 @@ const Hero = () => {
         className="w-64 h-64 md:w-80 md:h-80 object-contain" 
       />
       
-      <div className="text-center md:text-left max-w-lg">
+      <div className="text-center md:text-left max-w-2lg">
         <h1 className="text-5xl md:text-7xl font-bold mb-4">
           GitHub Art
         </h1>
-        <p className="text-xl md:text-2xl mb-6">
-          A digital artwork inspired by your GitHub contributions
+        <p className="text-[1rem] md:text-xl mb-6">
+          a website to help you create fun artworks in your GitHub contribution charts!!
         </p>
         
         <button

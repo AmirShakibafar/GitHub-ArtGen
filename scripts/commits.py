@@ -4,16 +4,22 @@ from datetime import datetime, timedelta
 
 
 # All fields you need to edit are in this section.
-# ---------------------------------------------------------------------
+# --------------------------------------------------------------------
+
 # 1. The name of the file containing your 7x52 art.
-# !!!This file must be in the same directory as this script.
+#    This file must be in the same directory as this script.
 ART_FILE_NAME = "art.txt"
 
-# 2.The number of commits to create for each '#' character.
-#  More commits will make the dots on your graph appear darker.
+# 2. The number of commits to create for each '#' character.
+#    More commits will make the dots on your graph appear darker.
 COMMITS_PER_DOT = 5
 
-# 3. (Optional) Your Git name and email.
+# 3. The year you want the art to appear in.
+#    Leave as None to default to the last 52 weeks.
+#    Example: TARGET_YEAR = 2023
+TARGET_YEAR = None
+
+# 4. (Optional) Your Git name and email.
 #    The script will try to get these from your global Git config.
 #    Only change these if you want to override your global settings.
 GIT_NAME_OVERRIDE = ""
@@ -68,11 +74,17 @@ def main():
     os.system(f'git config user.email "{user_email}"')
     
     # --- Generate Commits ---
-    today = datetime.now()
-    last_sunday = today - timedelta(days=(today.weekday() + 1) % 7)
-    start_date = last_sunday - timedelta(weeks=51)
+    if TARGET_YEAR:
+        first_day_of_year = datetime(TARGET_YEAR, 1, 1)
+        days_to_first_sunday = (6 - first_day_of_year.weekday()) % 7
+        start_date = first_day_of_year + timedelta(days=days_to_first_sunday)
+        print(f"✅ Targeting year {TARGET_YEAR}, starting commits from {start_date.date()}.")
+    else:
+        today = datetime.now()
+        last_sunday = today - timedelta(days=(today.weekday() + 1) % 7)
+        start_date = last_sunday - timedelta(weeks=51)
+        print("✅ No target year set. Defaulting to the last 52 weeks.")
 
-    # Create a file to commit
     with open("README.md", "w") as f:
         f.write(f"# GitHub Art by {user_name}\n")
     os.system("git add README.md")
