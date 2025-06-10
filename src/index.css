@@ -4,13 +4,9 @@
 
 :root {
   --gh-bg: #ffffff;
-  --gh-header: #24292f;
+  --gh-section: #24292f;
   --gh-text: #1f2328;
-  --gh-border: #d0d7de;
   --gh-accent: #0969da;
-  --gh-accent-fg: #ffffff;
-  --gh-success: #1a7f37;
-  --gh-danger: #cf222e;
 }
 
 
@@ -19,10 +15,6 @@
     --gh-bg: #161b22;
     --gh-section: #0e151f ;
     --gh-text: #e6edf3;
-    --gh-border: #30363d;
-    --gh-accent: #2f81f7;
-    --gh-success: #2ea043;
-    --gh-danger: #f85149;
   }
 }
 

@@ -1,6 +1,26 @@
+import { FaTrashAlt } from 'react-icons/fa';
+
 const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
   const getColorIntensity = (isChecked) => {
-    return isChecked ? "bg-green-500" : "bg-gray-200";
+    return isChecked ? "bg-green-600" : "bg-gray-200";
+  };
+
+  const downloadArt = () => {
+    // Convert grid to text (#'s for true, spaces for false)
+    const artText = grid.map(row => 
+      row.map(cell => cell ? '#' : ' ').join('')
+    ).join('\n');
+    
+    // Create download link
+    const blob = new Blob([artText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'pixel-art.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -40,15 +60,16 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
       <div className="flex gap-4 mt-4">
         <button
           onClick={clearGrid}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+          className="px-4 py-2 text-text rounded-2xl hover:bg-text hover:text-white dark:hover:text-black transition-colors duration-200 ease-in flex items-center gap-2 cursor-pointer"
         >
-          Clear Grid
+          <FaTrashAlt className="inline" />
+          Clear
         </button>
         <button
-          onClick={() => console.log('Saved:', grid)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+          onClick={downloadArt}
+          className="px-4 py-2 bg-purple-700 text-white rounded-2xl hover:bg-purple-900 transition-colors duration-200 ease-in cursor-pointer"
         >
-          Save
+          Download Art (.txt)
         </button>
       </div>
     </div>
