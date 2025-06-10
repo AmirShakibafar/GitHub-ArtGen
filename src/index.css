@@ -1,2 +1,38 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+
+:root {
+  --gh-bg: #ffffff;
+  --gh-header: #24292f;
+  --gh-text: #1f2328;
+  --gh-border: #d0d7de;
+  --gh-accent: #0969da;
+  --gh-accent-fg: #ffffff;
+  --gh-success: #1a7f37;
+  --gh-danger: #cf222e;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gh-bg: #161b22;
+    --gh-section: #0e151f ;
+    --gh-text: #e6edf3;
+    --gh-border: #30363d;
+    --gh-accent: #2f81f7;
+    --gh-success: #2ea043;
+    --gh-danger: #f85149;
+  }
+}
+
+
+@theme {
+  --color-bg: var(--gh-bg);
+  --color-section: var(--gh-section);
+  --color-text: var(--gh-text);
+  --color-border: var(--gh-border);
+  --color-accent: var(--gh-accent);
+  --color-success: var(--gh-success);
+  --color-danger: var(--gh-danger);
+}
