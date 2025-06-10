@@ -1,26 +1,36 @@
 import { FaTrashAlt } from 'react-icons/fa';
+import JSZip from 'jszip'; // For creating zip files
+import { saveAs } from 'file-saver'; // For saving files
 
 const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
   const getColorIntensity = (isChecked) => {
     return isChecked ? "bg-green-600" : "bg-gray-200";
   };
 
-  const downloadArt = () => {
-    // Convert grid to text (#'s for true, spaces for false)
+  const downloadArtAndScript = async () => {
+    // Create a new zip file
+    const zip = new JSZip();
+    
+    // 1. Add art.txt to the zip
     const artText = grid.map(row => 
       row.map(cell => cell ? '#' : ' ').join('')
     ).join('\n');
+    zip.file("art.txt", artText);
     
-    // Create download link
-    const blob = new Blob([artText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'pixel-art.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // 2. Add script.py to the zip
+    try {
+      const response = await fetch('/scripts/script.py');
+      const scriptContent = await response.text();
+      zip.file("script.py", scriptContent);
+    } catch (error) {
+      console.error("Error loading script.py:", error);
+      // Fallback: Add a default script if the file can't be loaded
+      zip.file("script.py", `# Python script to process your art\n# Your grid data will be in art.txt`);
+    }
+    
+    // Generate the zip file and trigger download
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, "github-art-package.zip");
   };
 
   return (
@@ -66,10 +76,10 @@ const ActivityChart = ({ grid, handleCheckboxChange, clearGrid }) => {
           Clear
         </button>
         <button
-          onClick={downloadArt}
+          onClick={downloadArtAndScript}
           className="px-4 py-2 bg-purple-700 text-white rounded-2xl hover:bg-purple-900 transition-colors duration-200 ease-in cursor-pointer"
         >
-          Download Art (.txt)
+          Download Art Package (.zip)
         </button>
       </div>
     </div>
